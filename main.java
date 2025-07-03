@@ -4,8 +4,10 @@ import java.util.Scanner;
 public class main {
     Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
+        boolean ende = true;
         ArrayList<String> startkapital  = new ArrayList<String>();
         ArrayList<String> endkapital  = new ArrayList<String>();
+        ArrayList<Anlageklassen> ausgewaehlt = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Willkommen zum Investitionsrechner");
@@ -19,25 +21,27 @@ public class main {
         System.out.println("3. Immobilien");
         int wahl = scanner.nextInt();
         Aktien test = new Aktien();
-        
-            System.out.print("Wählen Sie eine Anlageklasse (0 zum Beenden): ");
+            while(ende){
         switch (wahl) {
             case 1:
+            ausgewaehlt.add(new Aktien());
             System.out.println("Aktien hinzugefügt.");
             break;
             case 2:
-            
+            ausgewaehlt.add(new Anleihen());
             System.out.println("Anleihen hinzugefügt.");
             break;
             case 3:
-            
+            ausgewaehlt.add(new Immobilien());
             System.out.println("Immobilien hinzugefügt.");
             break;
             case 0:
-            
+            System.out.println(ausgewaehlt);
+            ende = false;
             break;
             default:
             System.out.println("Ungültige Auswahl.");
+            }
         }   
    }
 }

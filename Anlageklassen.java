@@ -15,6 +15,11 @@ public int getnutzerwert(){
     return nutzerwert;
 }
 
-
+public int neurendite(int bereich, int minusbereich){
+    Random rand = new Random();
+    rendite = rand.nextInt(bereich);
+    rendite -= minusbereich;
+    return rendite;
+    }
 
 }

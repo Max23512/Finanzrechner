@@ -1,7 +1,11 @@
+import java.util.Random;
 
 public class Aktien extends Anlageklassen{
-    
-public int neuerendite(){
-       return super.neurendite(40, 20);
+    @Override
+    public int neurendite(){
+       Random rand = new Random();
+    rendite = rand.nextInt(40);
+    rendite -= 20;
+    return rendite;
     }
 }

@@ -2,10 +2,11 @@ import java.util.Random;
 
 public class Anleihen extends Anlageklassen{
     @Override
-    public int neurendite(){
+    public double  neurendite(){
         Random rand = new Random();
-        rendite = rand.nextInt(40);
-        rendite -= 20;
+        rendite = rand.nextDouble(0.02);
+        rendite -= 0.01;
+        rendite++;
         return rendite;
         }
     }

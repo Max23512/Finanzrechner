@@ -1,10 +1,11 @@
 import java.util.Random;
 
 public class Immobilien extends Anlageklassen{
-    public int neuerendite(){
+    public double  neuerendite(){
         Random rand = new Random();
-        rendite = rand.nextInt(40);
-        rendite -= 20;
+        rendite = rand.nextDouble() * 0.01;
+        rendite -= 0.001;
+        rendite++;
         return rendite;
         }
     }

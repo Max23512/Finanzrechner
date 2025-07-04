@@ -5,14 +5,14 @@ public class main {
     Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         boolean ende = true;
-        ArrayList<Integer> startkapital  = new ArrayList<Integer>();
-        ArrayList<Integer> endkapital  = new ArrayList<Integer>();
+        ArrayList<Double> startkapital  = new ArrayList<Double>();
+        ArrayList<Double> endkapital  = new ArrayList<Double>();
         ArrayList<Anlageklassen> ausgewaehlt = new ArrayList<>();
             
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("Willkommen zum Investitionsrechner");
                 System.out.println("Bitte geben sie ihren Anlagebetrag ein");
-                int betrag = scanner.nextInt();
+                double betrag = scanner.nextInt();
                 startkapital.add(betrag);
                 System.out.println("Bitte geben sie ihre Laufzeit ein");
                 int laufzeit = scanner.nextInt();
@@ -23,7 +23,7 @@ public class main {
                 System.out.println("3. Immobilien");
                 System.out.println("Zeige die Vorraussage");
                 int wahl = scanner.nextInt();
-                Aktien test = new Aktien();
+                
             
                 switch (wahl) {
                     case 1:
@@ -49,8 +49,11 @@ public class main {
         for(int i = 0; i < ausgewaehlt.size(); i++){
             System.out.println(ausgewaehlt.get(i));
             for(int j = 0; j <= laufzeit; j++){
+                double akktuellerendite =  ausgewaehlt.get(i).rendite-1;
+                double test = j;
+                endkapital.add(test);
                 endkapital.set(j, startkapital.get(j) * ausgewaehlt.get(i).neurendite());
-                System.out.println(startkapital.get(j) + " " + ausgewaehlt.get(i).rendite + " " + endkapital.get(j));
+                System.out.println(startkapital.get(j) + " " + akktuellerendite + " " + endkapital.get(j));
                 startkapital.add(endkapital.get(j));
 
                 
@@ -58,5 +61,6 @@ public class main {
             
             } 
         }
+        scanner.close();
    }
 }

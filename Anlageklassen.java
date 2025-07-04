@@ -1,11 +1,11 @@
 import java.util.Random;
 
 public class Anlageklassen{
-int rendite;
+double rendite;
 int nutzerwert;
 
 
-public int getrendite(){
+public double getrendite(){
     return rendite;
 }
 
@@ -15,7 +15,7 @@ public int getnutzerwert(){
     return nutzerwert;
 }
 
-public int neurendite(){
+public double  neurendite(){
     Random rand = new Random();
     rendite = rand.nextInt(40);
     rendite -= 1;

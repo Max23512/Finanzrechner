@@ -7,6 +7,7 @@ public class main {
         boolean ende = true;
         ArrayList<Double> startkapital  = new ArrayList<Double>();
         ArrayList<Double> endkapital  = new ArrayList<Double>();
+        ArrayList<Double> arrrendite  = new ArrayList<Double>();
         ArrayList<Anlageklassen> ausgewaehlt = new ArrayList<>();
             
                 Scanner scanner = new Scanner(System.in);
@@ -21,7 +22,7 @@ public class main {
                 System.out.println("1. Aktien");
                 System.out.println("2. Anleihen");
                 System.out.println("3. Immobilien");
-                System.out.println("Zeige die Vorraussage");
+                System.out.println("0. Zeige die Vorraussage");
                 int wahl = scanner.nextInt();
                 
             
@@ -48,14 +49,18 @@ public class main {
             }  
         for(int i = 0; i < ausgewaehlt.size(); i++){
             System.out.println(ausgewaehlt.get(i));
+            System.out.println("");
+            System.out.println("Startkapital      Rendite      Endkapital");
             for(int j = 0; j <= laufzeit; j++){
                 double test = j;
                 endkapital.add(test);
                 endkapital.set(j, startkapital.get(j) * ausgewaehlt.get(i).neurendite());
-                System.out.println(startkapital.get(j) + " " + ausgewaehlt.get(i).akktuellerendite + " " + endkapital.get(j));
+                System.out.println(startkapital.get(j) + "    " + ausgewaehlt.get(i).akktuellerendite + "    " + endkapital.get(j));
                 startkapital.add(endkapital.get(j));
+                arrrendite.add(ausgewaehlt.get(i).akktuellerendite);
             } 
         }
         scanner.close();
+        System.out.println(arrrendite);
    }
 }

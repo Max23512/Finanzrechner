@@ -47,20 +47,6 @@ public class main {
                     System.out.println("Ungültige Auswahl.");
                 }
             }  
-        for(int i = 0; i < ausgewaehlt.size(); i++){
-            System.out.println(ausgewaehlt.get(i));
-            System.out.println("");
-            System.out.println("Startkapital      Rendite      Endkapital");
-            for(int j = 0; j <= laufzeit; j++){
-                double test = j;
-                endkapital.add(test);
-                endkapital.set(j, startkapital.get(j) * ausgewaehlt.get(i).neurendite());
-                System.out.println(startkapital.get(j) + "    " + ausgewaehlt.get(i).akktuellerendite + "    " + endkapital.get(j));
-                startkapital.add(endkapital.get(j));
-                arrrendite.add(ausgewaehlt.get(i).akktuellerendite);
-            } 
-        }
         scanner.close();
-        System.out.println(arrrendite);
    }
 }

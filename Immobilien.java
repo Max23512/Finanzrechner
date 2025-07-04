@@ -5,8 +5,11 @@ public class Immobilien extends Anlageklassen{
         Random rand = new Random();
         rendite = rand.nextDouble() * 0.01;
         rendite -= 0.001;
+        akktuellerendite = rendite;
         rendite++;
         return rendite;
         }
+
+    
     }
 

@@ -6,8 +6,10 @@ public class Anleihen extends Anlageklassen{
         Random rand = new Random();
         rendite = rand.nextDouble(0.02);
         rendite -= 0.01;
+        akktuellerendite = rendite;
         rendite++;
         return rendite;
         }
+
     }
    

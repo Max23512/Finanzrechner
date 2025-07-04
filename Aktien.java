@@ -6,6 +6,7 @@ public class Aktien extends Anlageklassen{
        Random rand = new Random();
     rendite = rand.nextDouble(0.4);
     rendite -= 0.2;
+    akktuellerendite = rendite;
     rendite++;
     return rendite;
     }

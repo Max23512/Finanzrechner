@@ -49,16 +49,11 @@ public class main {
         for(int i = 0; i < ausgewaehlt.size(); i++){
             System.out.println(ausgewaehlt.get(i));
             for(int j = 0; j <= laufzeit; j++){
-                double akktuellerendite =  ausgewaehlt.get(i).rendite-1;
                 double test = j;
                 endkapital.add(test);
                 endkapital.set(j, startkapital.get(j) * ausgewaehlt.get(i).neurendite());
-                System.out.println(startkapital.get(j) + " " + akktuellerendite + " " + endkapital.get(j));
+                System.out.println(startkapital.get(j) + " " + ausgewaehlt.get(i).akktuellerendite + " " + endkapital.get(j));
                 startkapital.add(endkapital.get(j));
-
-                
-
-            
             } 
         }
         scanner.close();

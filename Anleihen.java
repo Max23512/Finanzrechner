@@ -7,9 +7,9 @@ public class Anleihen extends Anlageklassen{
         rendite = rand.nextDouble(0.02);
         rendite -= 0.01;
         akktuellerendite = rendite;
+        akktuellerendite *= 100;
         rendite++;
         return rendite;
         }
-
     }
    

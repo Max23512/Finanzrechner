@@ -9,6 +9,7 @@ public class main {
         ArrayList<Double> endkapital  = new ArrayList<Double>();
         ArrayList<Double> arrrendite  = new ArrayList<Double>();
         ArrayList<Anlageklassen> ausgewaehlt = new ArrayList<>();
+       
             
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("Willkommen zum Investitionsrechner");
@@ -47,6 +48,19 @@ public class main {
                     System.out.println("Ungültige Auswahl.");
                 }
             }  
+            
+            Finanzrechner rechner = new Finanzrechner(startkapital, ausgewaehlt,laufzeit);
+            rechner.berechne();
+           
+            
+           
+            
+             for(int i = 0; i < laufzeit*ausgewaehlt.size(); i++){
+            System.out.println(rechner.getstartkapital().get(i) + "     " + rechner.getakktuellerendite().get(i) + "     " + rechner.getendkapital().get(i));
+            }
+            System.out.println(rechner.getstartkapital());
+            System.out.println(rechner.getakktuellerendite());
+            System.out.println(rechner.getendkapital());
         scanner.close();
    }
 }

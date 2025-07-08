@@ -20,8 +20,11 @@ public class Finanzrechner {
         public void berechne(){
             for(int i = 0; i < ausgewaehlt.size(); i++){
                 for(int j = 0; j <= laufzeit; j++){
-                    endkapital.add(startkapital.get(j) * ausgewaehlt.get(i).neurendite());
-                    startkapital.add(endkapital.get(j));
+                    //System.out.println();
+                    endkapital.add(startkapital.get(startkapital.size()-1) * ausgewaehlt.get(i).neurendite());
+                    //stem.out.println();
+                    startkapital.add(endkapital.get(endkapital.size()-1));
+                    //System.out.println();
                     arrrendite.add(ausgewaehlt.get(i).akktuellerendite);
 
                     if(startkapital.size()%laufzeit == 1){

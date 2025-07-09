@@ -1,16 +1,15 @@
-package backend;
+package src.main.java.backend;
 import java.util.Random;
 
-public class Immobilien extends Anlageklassen{
+public class Aktien extends Anlageklassen{
     @Override
     public double  neurendite(){
         Random rand = new Random();
-        rendite = rand.nextDouble() * 0.1;
-        rendite -= 0.05;
+        rendite = rand.nextDouble(0.4);
+        rendite -= 0.2;
         akktuellerendite = rendite;
         akktuellerendite *= 100;
         rendite++;
         return rendite;
-        }
     }
-
+}

@@ -1,4 +1,4 @@
-package backend;
+package src.main.java.backend;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.*;

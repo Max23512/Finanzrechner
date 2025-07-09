@@ -1,4 +1,4 @@
-package backend;
+package src.main.java.backend;
 
 import java.util.Map;
 

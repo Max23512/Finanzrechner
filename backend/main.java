@@ -1,3 +1,4 @@
+package backend;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,6 +15,7 @@ public class main {
         boolean gueltigeEingabe2 = false;
         int laufzeit = 0;
         int wahl =0;
+        double betrag = 0;
        
             
                 Scanner scanner = new Scanner(System.in);
@@ -21,7 +23,7 @@ public class main {
             while (!gueltigeEingabe) {
                 System.out.println("Bitte geben sie ihren Anlagebetrag ein");
                 try{
-                    double betrag = scanner.nextInt();
+                    betrag = scanner.nextInt();
                     startkapital.add(betrag);
                     gueltigeEingabe =true;
                     if(betrag<1){
@@ -97,11 +99,13 @@ public class main {
 
              for(int i = 0; i < laufzeit*ausgewaehlt.size(); i++){
             System.out.println(rechner.getstartkapital().get(i) + "     " + rechner.getakktuellerendite().get(i) + "     " + rechner.getendkapital().get(i));
-            
-            
+            if(i%laufzeit == 1/laufzeit){
+                double endrendite = rechner.getendkapital().get(i) + - betrag;
+                System.out.println("Das ist ihr Endkapital" + " " + rechner.getendkapital().get(i));
+                System.out.println("Das ist ihre Rendite" + " " + endrendite);
             }
-            System.out.println("Ihr Endkapital beträgt" + " " + rechner.getendkapital().get(rechner.getendkapital().size()-1));
-           
+                
         scanner.close();
+        }
    }
 }

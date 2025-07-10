@@ -1,111 +1,125 @@
-package src.main.java.backend;
+package backend;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class main {
-    Scanner scanner = new Scanner(System.in);
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Main implements CommandLineRunner {
+
     public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+
         boolean ende = true;
-        ArrayList<Double> startkapital  = new ArrayList<Double>();
-        ArrayList<Double> endkapital  = new ArrayList<Double>();
-        ArrayList<Double> arrrendite  = new ArrayList<Double>();
+        ArrayList<Double> startkapital = new ArrayList<>();
+        ArrayList<Double> endkapital = new ArrayList<>();
+        ArrayList<Double> arrrendite = new ArrayList<>();
         ArrayList<Anlageklassen> ausgewaehlt = new ArrayList<>();
         boolean gueltigeEingabe = false;
         boolean gueltigeEingabe1 = false;
         boolean gueltigeEingabe2 = false;
         int laufzeit = 0;
-        int wahl =0;
+        int wahl = 0;
         double betrag = 0;
-       
-            
-                Scanner scanner = new Scanner(System.in);
-                System.out.println("Willkommen zum Investitionsrechner");
-            while (!gueltigeEingabe) {
-                System.out.println("Bitte geben sie ihren Anlagebetrag ein");
-                try{
-                    betrag = scanner.nextInt();
-                    startkapital.add(betrag);
-                    gueltigeEingabe =true;
-                    if(betrag<1){
-                     gueltigeEingabe =false; 
-                     System.out.println("Anlagebetrag zu klein ");  
-                    }
-                } catch(java.util.InputMismatchException e){
-                        System.out.println("eine ganze Zahl ohne zeichen bitte");
-                        scanner.nextLine();
+
+        System.out.println("Willkommen zum Investitionsrechner");
+
+        while (!gueltigeEingabe) {
+            System.out.println("Bitte geben sie ihren Anlagebetrag ein");
+            try {
+                betrag = scanner.nextInt();
+                if (betrag < 1) {
+                    System.out.println("Anlagebetrag zu klein");
+                    continue;
                 }
-            }   
-            while (!gueltigeEingabe1) {  
-                try{
-                    System.out.println("Bitte geben sie ihre Laufzeit ein");
-                    laufzeit = scanner.nextInt();
-                    gueltigeEingabe1 =true;
-                     if(laufzeit<1){
-                     gueltigeEingabe1 =false; 
-                     System.out.println("laufzeit zu kurz");  
-                    }
-                } catch(java.util.InputMismatchException e){
-                        System.out.println("eine ganze Zahl ohne zeichen bitte");
-                        scanner.nextLine();
-                }        
-             }
-            while(ende){   
-                 while (!gueltigeEingabe2) { 
-                    try{
-                        System.out.println("Wählen sie die Anlageklasse aus");
-                        System.out.println("1. Aktien");
-                        System.out.println("2. Anleihen");
-                        System.out.println("3. Immobilien");
-                        System.out.println("0. Zeige die Vorraussage");
-                        wahl = scanner.nextInt();
+                startkapital.add(betrag);
+                gueltigeEingabe = true;
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Eine ganze Zahl ohne Zeichen bitte");
+                scanner.nextLine();
+            }
+        }
+
+        while (!gueltigeEingabe1) {
+            System.out.println("Bitte geben sie ihre Laufzeit ein");
+            try {
+                laufzeit = scanner.nextInt();
+                if (laufzeit < 1) {
+                    System.out.println("Laufzeit zu kurz");
+                    continue;
+                }
+                gueltigeEingabe1 = true;
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Eine ganze Zahl ohne Zeichen bitte");
+                scanner.nextLine();
+            }
+        }
+
+        while (ende) {
+            while (!gueltigeEingabe2) {
+                System.out.println("Wählen sie die Anlageklasse aus");
+                System.out.println("1. Aktien");
+                System.out.println("2. Anleihen");
+                System.out.println("3. Immobilien");
+                System.out.println("0. Zeige die Vorraussage");
+                try {
+                    wahl = scanner.nextInt();
+                    if (wahl < 0 || wahl > 3) {
+                        System.out.println("Nur 0, 1, 2 oder 3 sind erlaubt!");
+                    } else {
                         gueltigeEingabe2 = true;
-                            if (wahl < 0 || wahl > 3) {
-                                System.out.println("Nur 0, 1, 2 oder 3 sind erlaubt!");
-                                gueltigeEingabe2 = false;
-                            }
-                    } catch(java.util.InputMismatchException e){
-                        System.out.println("Nur 1,2,3 oder 0 bitte");
-                        scanner.nextLine();
-                    }        
+                    }
+                } catch (java.util.InputMismatchException e) {
+                    System.out.println("Nur 1, 2, 3 oder 0 bitte");
+                    scanner.nextLine();
                 }
-            
-                switch (wahl) {
-                    case 1:
+            }
+
+            switch (wahl) {
+                case 1:
                     ausgewaehlt.add(new Aktien());
                     System.out.println("Aktien hinzugefügt.");
                     gueltigeEingabe2 = false;
                     break;
-                    case 2:
+                case 2:
                     ausgewaehlt.add(new Anleihen());
                     System.out.println("Anleihen hinzugefügt.");
                     gueltigeEingabe2 = false;
                     break;
-                    case 3:
+                case 3:
                     ausgewaehlt.add(new Immobilien());
                     System.out.println("Immobilien hinzugefügt.");
                     gueltigeEingabe2 = false;
                     break;
-                    case 0:
+                case 0:
                     ende = false;
                     gueltigeEingabe2 = true;
                     break;
-                    default:
+                default:
                     System.out.println("Ungültige Auswahl.");
-                }
-            }  
-            
-            Finanzrechner rechner = new Finanzrechner(startkapital, ausgewaehlt,laufzeit);
-            rechner.berechne();
-
-             for(int i = 0; i < laufzeit*ausgewaehlt.size(); i++){
-            System.out.println(rechner.getstartkapital().get(i) + "     " + rechner.getakktuellerendite().get(i) + "     " + rechner.getendkapital().get(i));
-            if(i%laufzeit == 1/laufzeit){
-                double endrendite = rechner.getendkapital().get(i) + - betrag;
-                System.out.println("Das ist ihr Endkapital" + " " + rechner.getendkapital().get(i));
-                System.out.println("Das ist ihre Rendite" + " " + endrendite);
             }
-                
-        scanner.close();
         }
-   }
+
+        Finanzrechner rechner = new Finanzrechner(startkapital, ausgewaehlt, laufzeit);
+        rechner.berechne();
+
+        for (int i = 0; i < laufzeit * ausgewaehlt.size(); i++) {
+            System.out.println(rechner.getstartkapital().get(i) + "     " +
+                               rechner.getakktuellerendite().get(i) + "     " +
+                               rechner.getendkapital().get(i));
+            // Hier stimmt deine if-Bedingung vermutlich nicht, ich lass sie erstmal raus oder du passt sie an.
+        }
+
+        System.out.println("Das ist ihr Endkapital: " + rechner.getendkapital().get(rechner.getendkapital().size() - 1));
+        // Scanner schließen am Ende
+        scanner.close();
+    }
 }

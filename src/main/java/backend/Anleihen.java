@@ -1,4 +1,4 @@
-package src.main.java.backend;
+package backend;
 import java.util.Random;
 
 public class Anleihen extends Anlageklassen{

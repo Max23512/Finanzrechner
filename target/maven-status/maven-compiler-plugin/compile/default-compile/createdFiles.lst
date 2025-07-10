@@ -1,0 +1,9 @@
+backend\Anleihen.class
+backend\Main.class
+backend\ErgebnisDTO.class
+backend\Aktien.class
+backend\Anlageklassen.class
+backend\FinanzController.class
+backend\AnfrageDTO.class
+backend\Immobilien.class
+backend\Finanzrechner.class
